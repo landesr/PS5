@@ -12,8 +12,10 @@ public class test {
 		Catalog c = new Catalog();
 		Book b = new Book("a", "b", "c", "d", 1.1,2.2, new Date(), "e");
 		c.addBook(0, b);
+		
+		Book d = new Book("bk101");
 		try {
-			c.addBook(1, b);
+			c.addBook(0, b);
 		}catch(BookException e) {
 			
 		}
@@ -21,9 +23,10 @@ public class test {
 	@Test
 	public void testGetBook() throws BookException {
 		Catalog c = new Catalog();
-		Book m = c.getBook("bk102");
+		Book b = c.getBook("bk101");
+		
 		try {
-			Book m = c.getBook("bkMadeline");
+			Book b2 = c.getBook("bk");
 		} catch (BookException n) {
 		}
 	}

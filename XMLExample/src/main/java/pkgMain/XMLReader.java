@@ -26,8 +26,17 @@ public class XMLReader {
 		WriteXMLFile(cat);
 		
 	}
-
-
+	public XMLReader() {}
+	
+	public Catalog readCatalog()
+	{
+		return ReadCatalog();
+	}
+	
+	public void writeXML(Catalog cat)
+	{
+		WriteXMLFile(cat);
+	}
 	
 	
 	private static Catalog ReadCatalog() {

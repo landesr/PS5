@@ -6,8 +6,10 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-public class Book {
+import pkgException.BookException;
 
+public class Book {
+	private double cost;
 	private String id;
 	private String author;
 	private String title;
@@ -20,9 +22,10 @@ public class Book {
 
 	}
 
-	public Book(String id, String author, String title, String genre, double price, Date publish_date, String description)
+	public Book(String id, String author, String title, String genre, double price, double cost, Date publish_date, String description)
 	{
 		super();
+		this.cost=cost;
 		this.id = id;
 		this.author = author;
 		this.title = title;
@@ -32,7 +35,20 @@ public class Book {
 		this.description = description;
 	}
 	
- 
+	public Book(String s) throws BookException
+	{
+		Catalog c = new Catalog();
+		Book b = c.getBook(s);
+		this.id = b.id;
+		this.author = b.author;
+		this.title = b.title;
+		this.genre = b.genre;		
+		this.price = b.price;
+		this.cost = b.cost;
+		this.publish_date = b.publish_date;
+		this.description = b.description;
+		
+	}
 
 	public String getId() {
 		return id;
@@ -75,6 +91,16 @@ public class Book {
 	}
 
 	@XmlElement
+	public void setCost(double cost) {
+		this.cost = cost;
+	}
+
+	public double getCost() {
+		return cost;
+	}
+	
+
+	@XmlElement
 	public void setPrice(double price) {
 		this.price = price;
 	}
@@ -96,8 +122,6 @@ public class Book {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	
 	
 
 }

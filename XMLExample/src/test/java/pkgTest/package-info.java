@@ -5,4 +5,4 @@
  * @author Bert.Gibbons
  *
  */
-package pkgEmpty;
+package pkgTest;
